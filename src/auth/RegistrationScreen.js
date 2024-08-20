@@ -1,66 +1,68 @@
-import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native'
+import { ImageBackground, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const RegistrationScreen = () => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [reenteredPassword, setReenteredPassword] = useState('')
+  const [username,setUsername]=useState('')
+  const[email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+  const [reenteredPassword,setReenteredPassword]=useState('')
 
-  const handleSubmit = () => {
-    if (password !== reenteredPassword) {
-      Alert.alert('Error', 'Passwords do not match!')
-      return
-    }
-    Alert.alert('Success', 'Account created successfully!')
-  }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Sign Up</Text>
+    <SafeAreaView>
+      <View style={styles.MainContainer}>
+        <ImageBackground style={styles.BgImg} source={require('../assests/login_bg.png')}>
+          <View style={styles.signUp_container}>
+            <View >
+              <Text style={styles.SignUptxt}>SignUp</Text>
+            </View>
+            <View style={styles.InputContainer}>
+              <Text style={styles.label}>Username </Text>
+              <TextInput style={styles.input}
+                placeholder='Enter your name'
+                value={username}
+                onChange={setUsername}
+                placeholderTextColor={'#212121'}
+              />
+              <Text style={styles.label}>Email </Text>
+              <TextInput style={styles.input}
+              keyboardType="email-address"
+                placeholder='Enter your email'
+                value={email}
+                onChange={setEmail}
+                placeholderTextColor={'#212121'}
+              />
+              <Text style={styles.label}>Password </Text>
+              <TextInput style={styles.input}
+                placeholder='Enter the password'
+                value={password}
+                onChange={setPassword}
+                placeholderTextColor={'#212121'}
+              />
+              <Text style={styles.label}>Confirm password </Text>
+              <TextInput style={styles.input}
+                placeholder='Re-enter password'
+                value={reenteredPassword}
+                onChange={setReenteredPassword}
+                placeholderTextColor={'#212121'}
+              />
+            </View>
+            <View>
+              <TouchableOpacity style={styles.submitBtn}>
+                <Text style={styles.submit}>Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.BottomText}>
+              <Text style={styles.DnAccText}>Already have an account? </Text>
+              <TouchableOpacity>
+              <Text style={styles.signInText}>Sign In</Text>
+              </TouchableOpacity>
+              
+            </View>
+          </View>
+        </ImageBackground>
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          placeholderTextColor="#555"
-          value={username}
-          onChangeText={setUsername}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#555"
-          keyboardType="email-address"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="#555"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Re-enter Password"
-          placeholderTextColor="#555"
-          secureTextEntry
-          value={reenteredPassword}
-          onChangeText={setReenteredPassword}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Submit</Text>
-        </TouchableOpacity>
-      </View>
-      <TouchableOpacity style={styles.signInContainer}>
-        <Text style={styles.signInText}>Don't have an account? Sign in</Text>
-      </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -68,62 +70,66 @@ const RegistrationScreen = () => {
 export default RegistrationScreen
 
 const styles = StyleSheet.create({
-  container: {
+  MainContainer: {
+    height: '100%',
+    width: '100%',
+    overflow: 'hidden',
+  },
+  BgImg: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FBFF10',
   },
-  header: {
-    marginBottom: 20,
+  signUp_container: {
+    marginTop:60,
+    paddingHorizontal:20,
+
+
   },
-  headerText: {
-    fontSize: 28,
+  SignUptxt: {
+    color: '#FFCA28',
     fontWeight: 'bold',
-    color: '#383838', // Vibrant tomato color
-  },
-  inputContainer: {
-    width: '85%',
-    marginBottom: 20,
+    fontSize: 30,
+    marginBottom:15,
+    textAlign: 'center'
   },
   input: {
     backgroundColor: '#fff',
-    color:'#000',
-    padding: 12,
-    marginBottom: 15,
     borderRadius: 7,
-    fontSize: 16,
-    borderWidth: 2,
-    borderColor: '#29292933', // Coral border color
+    marginBottom: 10,
+    color: '#000',
+    paddingHorizontal:15,
+    fontSize:13,
+
   },
-  buttonContainer: {
-    width: '85%',
-    alignItems: 'center',
-  },
-  button: {
-    backgroundColor: '#ff4500', // OrangeRed color
-    paddingVertical: 15,
-    paddingHorizontal: 30,
+  submitBtn: {
+    backgroundColor: "#FFCA28",
+    paddingVertical:12,
     borderRadius: 7,
-    width: '100%',
+    marginTop:15,
     alignItems: 'center',
-    shadowColor: '#ff4500', 
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.8,
-    shadowRadius: 6,
-    elevation: 8,
+    justifyContent: 'center'
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+  submit: {
+    textAlign: "center",
+    fontSize: 15,
+    fontWeight: '600',
+    textTransform:'capitalize',
+    color: '#FFFFFF'
   },
-  signInContainer: {
-    marginTop: 25,
+  BottomText: {
+    justifyContent:'center',
+    flexDirection:'row',
+    marginTop:15
   },
+  
   signInText: {
-    color: '#1e90ff', // DodgerBlue color
-    fontSize: 16,
-    textDecorationLine: 'underline',
-  },
+    color:"#FFCA28",
+    fontWeight:'600',
+
+  }, 
+  label:{
+    fontSize:13,
+    fontWeight:"500",
+    color:'#FFCA28',
+    marginBottom:7,
+  }
 })
