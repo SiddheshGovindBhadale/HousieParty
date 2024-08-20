@@ -7,6 +7,10 @@ import Home from './src/screens/Home'
 import Stats from './src/screens/Stats'
 import Menu from './src/screens/Menu'
 import BottomNavigation from './src/navigation/BottomNavigation'
+import Login from './src/auth/Login'
+import Register from './src/auth/Register'
+import ForgotPasswordScreen from './src/auth/ForgotPasswordScreen'
+import ChangePassword from './src/auth/ChangePassword'
 
 const App = () => {
 
@@ -14,12 +18,16 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="BottomNavigation" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Auth" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Stats" component={Stats} />
         <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
+        <Stack.Screen name="ChangePassword" component={ChangePassword} />
       </Stack.Navigator>
     </NavigationContainer>
   )
