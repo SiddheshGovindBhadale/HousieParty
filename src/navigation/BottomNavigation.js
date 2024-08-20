@@ -4,7 +4,10 @@ import Home from '../screens/Home'
 import Stats from '../screens/Stats'
 import Menu from '../screens/Menu'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/dist/AntDesign';
+import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 
 const BottomNavigation = () => {
 
@@ -19,13 +22,13 @@ const BottomNavigation = () => {
                 borderTopWidth: 0,
                 height: 55,
                 paddingHorizontal: 5,
-                backgroundColor: '#0A091E'
+                backgroundColor: '#FFFFFF'
             },
             null,
         ],
         tabBarShowLabel: true,
         tabBarInactiveTintColor: '#8E8E8E',
-        tabBarActiveTintColor: '#6156E2',
+        tabBarActiveTintColor: '#FFCA28',
     });
 
     return (
@@ -33,12 +36,12 @@ const BottomNavigation = () => {
             screenOptions={screenOptions}
         >
             <Tab.Screen
-                name="Home"
+                name="Dashboard"
                 component={Home}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ size, color }) => (
-                        <AntDesign name='home' size={size} color={color} />
+                        <MaterialCommunityIcons name='view-dashboard' size={size} color={color} />
                     )
                 }}
             />
@@ -48,7 +51,7 @@ const BottomNavigation = () => {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ size, color }) => (
-                        <AntDesign name='home' size={size} color={color} />
+                        <Ionicons name='trophy' size={size} color={color} />
                     )
                 }}
             />
@@ -58,7 +61,7 @@ const BottomNavigation = () => {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ size, color }) => (
-                        <AntDesign name='home' size={size} color={color} />
+                        <FontAwesome name='user' size={size} color={color} />
                     )
                 }}
             />

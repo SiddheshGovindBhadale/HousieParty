@@ -12,7 +12,7 @@ const RegistrationScreen = () => {
   return (
     <SafeAreaView>
       <View style={styles.MainContainer}>
-        <ImageBackground style={styles.BgImg} source={require('../assests/login_bg.png')}>
+        <ImageBackground style={styles.BgImg} source={require('../assets/login_bg.png')}>
           <View style={styles.signUp_container}>
             <View >
               <Text style={styles.SignUptxt}>SignUp</Text>

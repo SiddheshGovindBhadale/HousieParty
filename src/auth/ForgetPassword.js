@@ -17,7 +17,7 @@ const ForgetPassword = () => {
         <View style={styles.imgContainer}>
           <Image
             style={styles.img}
-            source={require('../assests/forget_pwd.png')}
+            source={require('../assets/forget_pwd.png')}
           />
         </View>
         <Text style={styles.text}>Forgot Your Password?</Text>
