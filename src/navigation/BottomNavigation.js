@@ -24,7 +24,7 @@ const BottomNavigation = () => {
             null,
         ],
         tabBarShowLabel: true,
-        tabBarInactiveTintColor: '#8E8E8E',
+        tabBarInactiveTintColor: '#920B92',
         tabBarActiveTintColor: '#6156E2',
     });
 
