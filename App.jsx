@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
@@ -11,25 +11,30 @@ import Login from './src/auth/Login'
 import Register from './src/auth/Register'
 import ForgotPasswordScreen from './src/auth/ForgotPasswordScreen'
 import ChangePassword from './src/auth/ChangePassword'
+import LoadingScreen from './src/components/LoadingScreen/LoadingScreen'
 
 const App = () => {
 
   const Stack = createNativeStackNavigator()
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Auth" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Auth" component={Auth} />
-        <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Stats" component={Stats} />
-        <Stack.Screen name="Menu" component={Menu} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
-        <Stack.Screen name="ChangePassword" component={ChangePassword} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <StatusBar hidden={true} />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="LoadingScreen" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
+          <Stack.Screen name="Auth" component={Auth} />
+          <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Stats" component={Stats} />
+          <Stack.Screen name="Menu" component={Menu} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
+          <Stack.Screen name="ChangePassword" component={ChangePassword} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   )
 }
 

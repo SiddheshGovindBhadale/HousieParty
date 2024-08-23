@@ -3,6 +3,8 @@ import { View, TextInput, Button, ActivityIndicator, TouchableOpacity, ToastAndr
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import Fontisto from 'react-native-vector-icons/dist/Fontisto';
 import Config from 'react-native-config';
 
 const ForgotPasswordScreen = ({ navigation }) => {
@@ -76,15 +78,15 @@ const ForgotPasswordScreen = ({ navigation }) => {
     };
 
     return (
-        <SafeAreaView style={{ backgroundColor: '#ffffff', height: '100%' }}>
+        <SafeAreaView style={{ backgroundColor: '#212121', height: '100%' }}>
             {isLoading ? (
-                <ActivityIndicator style={styles.loader} size="large" color="#FFCA28" />
+                <ActivityIndicator style={styles.loader} size="large" color="#f7ac01" />
             ) : (
                 <ScrollView>
                     <View style={styles.mainContainer}>
                         <View style={styles.topStatusBar}>
-                            <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('FarmerToFarmer')}>
-                                <Ionicons name="chevron-back-outline" size={22} color="#585C60" />
+                            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                                <Ionicons name="chevron-back-outline" size={22} color="#ffffff" />
                             </TouchableOpacity>
                             <Text style={styles.heading}>Forgot Password</Text>
                         </View>
@@ -94,31 +96,35 @@ const ForgotPasswordScreen = ({ navigation }) => {
                                 <View style={styles.imageContainer}>
                                     <Image style={styles.Image} source={require('../assets/icon/email.png')} />
                                 </View>
+                                <View style={styles.bottom}>
+                                    <Text style={styles.mesageText}>Please Enter Your Email Address To Recive Verification OTP</Text>
 
-                                <Text style={styles.mesageText}>Please Enter Your Email Address To Recive Verification OTP</Text>
-
-                                <View style={styles.form}>
-                                    <View>
-                                        <View style={styles.input_section}>
-                                            <Text style={styles.text}>Email</Text>
-                                            <TextInput
-                                                style={styles.input}
-                                                placeholder='Enter your email'
-                                                placeholderTextColor={"#828282"}
-                                                value={email}
-                                                autoCapitalize='none'
-                                                autoCorrect={false}
-                                                onChangeText={setEmail}
-                                            />
+                                    <View style={styles.form}>
+                                        <View>
+                                            <View style={styles.input_section}>
+                                                <Text style={styles.text}>Email</Text>
+                                                <View style={styles.inputContainer}>
+                                                    <MaterialCommunityIcons name='email' size={20} color={'#f7ac01'} />
+                                                    <TextInput
+                                                        style={styles.input}
+                                                        placeholder='Enter your email'
+                                                        placeholderTextColor={"#f2f2f2"}
+                                                        value={email}
+                                                        autoCapitalize='none'
+                                                        autoCorrect={false}
+                                                        onChangeText={setEmail}
+                                                    />
+                                                </View>
+                                            </View>
+                                            {loading ? (
+                                                <ActivityIndicator size="large" color="#f7ac01" />
+                                            ) : (
+                                                <TouchableOpacity style={styles.button} onPress={handleForgotPassword}>
+                                                    <Text style={styles.button_text}>Send OTP</Text>
+                                                </TouchableOpacity>
+                                            )}
+                                            {/* <Button title="Forgot Password" onPress={handleForgotPassword} /> */}
                                         </View>
-                                        {loading ? (
-                                            <ActivityIndicator size="large" color="#FFCA28" />
-                                        ) : (
-                                            <TouchableOpacity style={styles.button} onPress={handleForgotPassword}>
-                                                <Text style={styles.button_text}>Send OTP</Text>
-                                            </TouchableOpacity>
-                                        )}
-                                        {/* <Button title="Forgot Password" onPress={handleForgotPassword} /> */}
                                     </View>
                                 </View>
                             </View>
@@ -127,58 +133,69 @@ const ForgotPasswordScreen = ({ navigation }) => {
                                 <View style={styles.imageContainer}>
                                     <Image style={styles.Image} source={require('../assets/icon/password.png')} />
                                 </View>
+                                <View style={styles.bottom}>
+                                    {/* <Text style={styles.mesageText}>Please Enter The 6 Digit Code Send To {email}</Text> */}
+                                    <View style={styles.form}>
+                                        <View style={styles.input_section}>
+                                            <Text style={styles.text}>Enter OTP</Text>
+                                            <View style={styles.inputContainer}>
+                                                <MaterialCommunityIcons name='onepassword' size={20} color={'#f7ac01'} />
+                                                <TextInput
+                                                    style={[styles.input,  { width: '80%' }]}
+                                                    placeholder='Enter OTP'
+                                                    placeholderTextColor={"#f2f2f2"}
+                                                    value={otp}
+                                                    autoCapitalize='none'
+                                                    autoCorrect={false}
+                                                    onChangeText={setOTP}
+                                                />
+                                                <TouchableOpacity onPress={handleForgotPassword}>
+                                                    <Fontisto name='spinner-refresh' size={20} color={'#f7ac01'} style={{ paddingRight: 2 }} />
+                                                </TouchableOpacity>
+                                            </View>
+                                        </View>
+                                        <View style={styles.input_section}>
+                                            <Text style={styles.text}>Enter new password</Text>
+                                            <View style={styles.inputContainer}>
+                                                <Fontisto name='key' size={20} color={'#f7ac01'} />
+                                                <TextInput
+                                                    style={styles.input}
+                                                    placeholder='Enter new password'
+                                                    placeholderTextColor={"#f2f2f2"}
+                                                    value={newPassword}
+                                                    autoCapitalize='none'
+                                                    autoCorrect={false}
+                                                    onChangeText={setNewPassword}
+                                                />
+                                                
+                                            </View>
+                                        </View>
 
-                                <Text style={styles.mesageText}>Please Enter The 6 Digit Code Send To {email}</Text>
-                                <View style={styles.form}>
-                                    <View style={styles.input_section}>
-                                        <Text style={styles.text}>Enter OTP</Text>
-                                        <TextInput
-                                            style={styles.input}
-                                            placeholder='Enter OTP'
-                                            placeholderTextColor={"#828282"}
-                                            value={otp}
-                                            autoCapitalize='none'
-                                            autoCorrect={false}
-                                            onChangeText={setOTP}
-                                        />
-                                    </View>
-                                    <View style={styles.input_section}>
-                                        <Text style={styles.text}>Enter new password</Text>
-                                        <TextInput
-                                            style={styles.input}
-                                            placeholder='Enter new password'
-                                            placeholderTextColor={"#828282"}
-                                            value={newPassword}
-                                            autoCapitalize='none'
-                                            autoCorrect={false}
-                                            onChangeText={setNewPassword}
-                                        />
-                                    </View>
-
-                                    <TouchableOpacity style={styles.resendOtp} onPress={handleForgotPassword}>
-                                        <Text style={styles.resendOtp_text}>Resend OTP</Text>
-                                    </TouchableOpacity>
-                                    {/* <TextInput
+                                        {/* <TouchableOpacity style={styles.resendOtp} onPress={handleForgotPassword}>
+                                            <Text style={styles.resendOtp_text}>Resend OTP</Text>
+                                        </TouchableOpacity> */}
+                                        {/* <TextInput
                                     placeholder="Enter OTP"
                                     value={otp}
                                     onChangeText={setOTP}
                                     style={{ color: '#000000', marginBottom: 10, paddingHorizontal: 10, borderWidth: 1, borderColor: 'gray', borderRadius: 5 }}
                                 /> */}
-                                    {/* <TextInput
+                                        {/* <TextInput
                                     placeholder="Enter new password"
                                     value={newPassword}
                                     onChangeText={setNewPassword}
                                     style={{ color: '#000000', marginBottom: 10, paddingHorizontal: 10, borderWidth: 1, borderColor: 'gray', borderRadius: 5 }}
                                 /> */}
-                                    {/* <Button title="Reset Password" onPress={handleResetPassword} /> */}
+                                        {/* <Button title="Reset Password" onPress={handleResetPassword} /> */}
 
-                                    {loading ? (
-                                        <ActivityIndicator size="large" color="#FFCA28" />
-                                    ) : (
-                                        <TouchableOpacity style={styles.button} onPress={handleResetPassword}>
-                                            <Text style={styles.button_text}>Reset Password</Text>
-                                        </TouchableOpacity>
-                                    )}
+                                        {loading ? (
+                                            <ActivityIndicator size="large" color="#f7ac01" />
+                                        ) : (
+                                            <TouchableOpacity style={styles.button} onPress={handleResetPassword}>
+                                                <Text style={styles.button_text}>Reset Password</Text>
+                                            </TouchableOpacity>
+                                        )}
+                                    </View>
                                 </View>
 
 
@@ -204,9 +221,9 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         flexDirection: 'row',
         gap: 5,
-        paddingHorizontal: 10,
+        paddingHorizontal: 30,
         paddingVertical: 16,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#212121',
     },
     backButton: {
         // borderWidth:1,
@@ -214,30 +231,39 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     heading: {
-        color: '#000000',
+        color: '#ffffff',
         fontSize: 16,
         fontWeight: '600',
         textAlign: 'center',
-        width: '75%'
+    },
+    section: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center'
     },
     imageContainer: {
-        width: 230,
-        height: 230,
+        width: 220,
+        height: 220,
         borderRadius: 120,
         // borderWidth:1,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
-        marginVertical: 20,
+        marginVertical: 10,
         backgroundColor: '#fcf7e3'
     },
     Image: {
         width: '40%',
         height: '40%'
     },
+    bottom: {
+        // borderWidth: 1,
+        // borderColor: 'red',
+        width: '47%'
+    },
     mesageText: {
-        color: '#000000',
-        textAlign: 'center',
+        color: '#ffffff',
+        // textAlign: 'center',
         width: '80%',
         alignSelf: 'center',
         fontSize: 13,
@@ -257,27 +283,32 @@ const styles = StyleSheet.create({
         width: '100',
     },
     text: {
-        color: '#000000',
+        color: '#ffffff',
         fontSize: 14,
         fontWeight: '400',
         marginBottom: 1,
     },
-    input: {
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 22,
+        gap: 8,
         borderBottomWidth: 1,
-        borderBottomColor: '#000000',
+        borderBottomColor: '#ffffff',
+    },
+    input: {
         paddingBottom: 7,
         paddingHorizontal: 0,
-        marginBottom: 22,
         marginTop: -7,
-        color: '#000000',
-        width: '100%',
+        color: '#ffffff',
+        width: '90%',
         fontSize: 14,
         fontWeight: '400'
     },
     button: {
         borderRadius: 7,
         marginTop: -3,
-        backgroundColor: '#FFCA28',
+        backgroundColor: '#f7ac01',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
