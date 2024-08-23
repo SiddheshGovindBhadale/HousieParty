@@ -1,11 +1,12 @@
-import { StatusBar, Image, StyleSheet, Text, TouchableOpacity, View, Modal, ScrollView, ImageBackground } from 'react-native'
+import { StatusBar, Image, StyleSheet, Text, TouchableOpacity, View, Modal, ScrollView, ImageBackground, Dimensions } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import AntDesign from 'react-native-vector-icons/dist/AntDesign'
 import FontAwesome5 from 'react-native-vector-icons/dist/FontAwesome5'
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons'
 
 const Home = () => {
-
+  const { width, height } = Dimensions.get('window');
   const [gameList, setGameList] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -91,22 +92,10 @@ const Home = () => {
   }
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea, { height: height }]}>
       <View style={styles.mainContainer}>
-        <ImageBackground style={{ height: '100%'  }} source={require('../assets/gameIcons/Background.png')}>
-          <StatusBar hidden={true} />
+        <ImageBackground style={{ height: height, padding: 10 }} source={require('../assets/gameIcons/Background.png')}>
           <View style={styles.topBar}>
-            {/* <TouchableOpacity style={styles.addContainer}>
-            <View style={styles.iconButton}>
-              <Image style={styles.img} source={require('../assets/icon/user.png')} />
-            </View>
-            <View style={styles.iconButton}>
-              <Image style={styles.img} source={require('../assets/icon/user.png')} />
-            </View>
-            <View style={styles.iconButton}>
-              <AntDesign name='plus' size={30} color={'#212121'} />
-            </View>
-          </TouchableOpacity> */}
             <View style={styles.left}>
               <TouchableOpacity style={styles.friendsContainer}>
                 <View style={styles.onlineUserCount}>
@@ -124,7 +113,7 @@ const Home = () => {
                     <Image style={styles.frientImage} source={require('../assets/icon/user.png')} />
                   </View>
                   <View style={styles.friendImageContainer}>
-                    <AntDesign name='plus' size={22} color={'#FFFFFF'} />
+                    <AntDesign name='plus' size={18} color={'#FFFFFF'} />
                   </View>
                 </View>
               </TouchableOpacity>
@@ -163,7 +152,7 @@ const Home = () => {
                 <Text style={styles.username}>Mission</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.BottomButtons}>
-                <AntDesign name='doubleleft' style={{ transform: [{ rotate: '90deg' }] }} size={20} />
+                <MaterialIcons name='logout' size={18} color='#ffffff' />
               </TouchableOpacity>
             </View>
           </View>
@@ -177,8 +166,8 @@ export default Home
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1,
-    backgroundColor: '#212121'
+    // flex: 1,
+    backgroundColor: '#212121',
   },
   mainContainer: {
     // flex: 1,
@@ -189,8 +178,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF10',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingRight: 20,
-    paddingLeft: 20,
+    // paddingRight: 20,
+    // paddingLeft: 20,
   },
   addContainer: {
     flexDirection: 'row',
@@ -200,6 +189,9 @@ const styles = StyleSheet.create({
   profileContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderWidth: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    paddingHorizontal:10
   },
   iconButton: {
     marginHorizontal: 5,
@@ -220,7 +212,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   level: {
-     color: "#ffffff",
+    color: "#ffffff",
     fontSize: 10,
     paddingLeft: 15,
   },
@@ -228,7 +220,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     resizeMode: 'cover',
-    marginTop: 5,
+    // marginTop: 5,
   },
   contentContainer: {
     flex: 1,
@@ -239,16 +231,15 @@ const styles = StyleSheet.create({
   startButton: {
     backgroundColor: '#f7ac01',
     borderRadius: 8,
-    marginBottom: 5,
-    paddingVertical: 15,
+    // marginBottom: 5,
+    paddingVertical: 9,
     paddingHorizontal: 50,
     alignSelf: 'flex-start',
-    marginStart: 10
+    // marginStart: 10
   },
   startButtonText: {
     fontSize: 18,
-    fontWeight: 'bold',
-    fontWeight: '600',
+    fontWeight: '700',
   },
   modalOverlay: {
     flex: 1,
@@ -285,9 +276,9 @@ const styles = StyleSheet.create({
   },
   GameBtn: {
     borderRadius: 8,
-    marginStart: 10,
-    width: 141,
-    height: 65,
+    // marginStart: 10,
+    width: 138,
+    height: 50,
     borderWidth: 1,
     borderColor: '#fff',
     overflow: 'hidden',
@@ -321,13 +312,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   Arrow: {
-    marginEnd: 20
+    // marginEnd: 20
 
   },
   BottomButtons: {
-    backgroundColor: '#514F4F46',
-    borderRadius: 0,
-    marginBottom: 5,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     paddingVertical: 10,
     paddingHorizontal: 20,
     alignSelf: 'flex-end',
@@ -336,9 +325,11 @@ const styles = StyleSheet.create({
   },
   left: {
     overflow: 'hidden',
-    paddingVertical: 4,
+    paddingVertical: 5,
     paddingHorizontal: 4,
-    backgroundColor: 'rgba(128, 128, 128, 0.5)',
+    // backgroundColor: 'rgba(128, 128, 128, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+
   },
   onlineUserCount: {
     flexDirection: 'row',
@@ -361,7 +352,9 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
     borderWidth: 1,
-    borderColor: '#eeeeee'
+    borderColor: '#eeeeee',
+    justifyContent:'center',
+    alignItems:'center'
   },
   frientImage: {
     width: '100%',
