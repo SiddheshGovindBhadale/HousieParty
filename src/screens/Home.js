@@ -143,13 +143,13 @@ const Home = () => {
             </TouchableOpacity>
             <View style={styles.settingBar} >
               <TouchableOpacity style={styles.BottomButtons}>
-                <Text style={styles.username}>Rewards</Text>
+                <Text style={styles.BottomButtonsText}>Rewards</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.BottomButtons}>
-                <Text style={styles.username}>WorkShop</Text>
+                <Text style={styles.BottomButtonsText}>WorkShop</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.BottomButtons}>
-                <Text style={styles.username}>Mission</Text>
+                <Text style={styles.BottomButtonsText}>Mission</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.BottomButtons}>
                 <MaterialIcons name='logout' size={18} color='#ffffff' />
@@ -318,10 +318,17 @@ const styles = StyleSheet.create({
   BottomButtons: {
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 23,
     alignSelf: 'flex-end',
-    marginStart: 5
-
+    marginStart: 5,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  BottomButtonsText:{
+    color: "#ffffff",
+    fontSize: 13,
+    fontWeight: '600',
+    textAlign:'center',
   },
   left: {
     overflow: 'hidden',
