@@ -11,6 +11,7 @@ import Login from './src/auth/Login'
 import Register from './src/auth/Register'
 import ForgotPasswordScreen from './src/auth/ForgotPasswordScreen'
 import ChangePassword from './src/auth/ChangePassword'
+import LoadingScreen from './src/components/LoadingScreen/LoadingScreen'
 
 const App = () => {
 

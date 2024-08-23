@@ -93,20 +93,10 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.mainContainer}>
-        <ImageBackground style={{ height: '100%'  }} source={require('../assets/gameIcons/Background.png')}>
+        <ImageBackground style={{ height: '100%' }} source={require('../assets/gameIcons/Background.png')}>
           <StatusBar hidden={true} />
           <View style={styles.topBar}>
-            {/* <TouchableOpacity style={styles.addContainer}>
-            <View style={styles.iconButton}>
-              <Image style={styles.img} source={require('../assets/icon/user.png')} />
-            </View>
-            <View style={styles.iconButton}>
-              <Image style={styles.img} source={require('../assets/icon/user.png')} />
-            </View>
-            <View style={styles.iconButton}>
-              <AntDesign name='plus' size={30} color={'#212121'} />
-            </View>
-          </TouchableOpacity> */}
+
             <View style={styles.left}>
               <TouchableOpacity style={styles.friendsContainer}>
                 <View style={styles.onlineUserCount}>
@@ -125,10 +115,10 @@ const Home = () => {
                   </View>
                   <View style={styles.friendImageContainer}>
                     <AntDesign name='plus' size={22} color={'#FFFFFF'} />
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </View>
+                  </View >
+                </View >
+              </TouchableOpacity >
+            </View >
             <View style={styles.profileContainer}>
               <View style={styles.userContainer}>
                 <Text style={styles.username}>Username</Text>
@@ -138,7 +128,7 @@ const Home = () => {
                 <Image style={styles.profileImg} source={require('../assets/icon/user.png')} />
               </TouchableOpacity>
             </View>
-          </View>
+          </View >
           <View style={styles.contentContainer}>
             {/* Add additional components like buttons, banners, etc. */}
           </View>
@@ -155,7 +145,7 @@ const Home = () => {
             <View style={styles.settingBar} >
               <TouchableOpacity style={styles.BottomButtons}>
                 <Text style={styles.username}>Rewards</Text>
-              </TouchableOpacity>
+              </TouchableOpacity >
               <TouchableOpacity style={styles.BottomButtons}>
                 <Text style={styles.username}>WorkShop</Text>
               </TouchableOpacity>
@@ -165,11 +155,11 @@ const Home = () => {
               <TouchableOpacity style={styles.BottomButtons}>
                 <AntDesign name='doubleleft' style={{ transform: [{ rotate: '90deg' }] }} size={20} />
               </TouchableOpacity>
-            </View>
-          </View>
-        </ImageBackground>
-      </View>
-    </SafeAreaView>
+            </View >
+          </View >
+        </ImageBackground >
+      </View >
+    </SafeAreaView >
   )
 }
 
@@ -220,7 +210,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   level: {
-     color: "#ffffff",
+    color: "#ffffff",
     fontSize: 10,
     paddingLeft: 15,
   },

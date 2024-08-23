@@ -31,7 +31,7 @@ const Auth = () => {
   }
 
   return (
-    <View>
+    <View style={{backgroundColor:'#000000', height:'100%'}}>
       <Text>Auth Loading Screen</Text>
       {/* You can add a loading spinner or other UI elements if needed */}
     </View>
