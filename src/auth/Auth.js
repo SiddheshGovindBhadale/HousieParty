@@ -16,7 +16,7 @@ const Auth = () => {
         navigation.replace('Login');
       } else {
         // User data is empty, navigate to login screen
-        navigation.replace('BottomNav');
+        navigation.replace('Home');
       }
     } catch (error) {
       console.error('Error checking user data:', error);
