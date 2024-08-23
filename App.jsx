@@ -18,23 +18,19 @@ const App = () => {
   const Stack = createNativeStackNavigator()
 
   return (
-    <>
-      <StatusBar hidden={true} />
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="LoadingScreen" screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
-          <Stack.Screen name="Auth" component={Auth} />
-          <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Stats" component={Stats} />
-          <Stack.Screen name="Menu" component={Menu} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
-          <Stack.Screen name="ChangePassword" component={ChangePassword} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Auth" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Auth" component={Auth} />
+        <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Stats" component={Stats} />
+        <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
+        <Stack.Screen name="ChangePassword" component={ChangePassword} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
