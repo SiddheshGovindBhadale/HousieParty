@@ -12,6 +12,7 @@ import Register from './src/auth/Register'
 import ForgotPasswordScreen from './src/auth/ForgotPasswordScreen'
 import ChangePassword from './src/auth/ChangePassword'
 import LoadingScreen from './src/components/LoadingScreen/LoadingScreen'
+import Tambola from './src/screens/GameScreens/Tambola'
 
 const App = () => {
 
@@ -21,7 +22,7 @@ const App = () => {
     <>
       <StatusBar hidden={true} />
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="Tambola" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Auth" component={Auth} />
           <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
           <Stack.Screen name="Home" component={Home} />
@@ -31,6 +32,7 @@ const App = () => {
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
           <Stack.Screen name="ChangePassword" component={ChangePassword} />
+          <Stack.Screen name="Tambola" component={Tambola} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
