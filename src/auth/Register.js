@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert, ActivityIndicator, Dime
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { validateEmail, validatePassword } from '../utils/utils';
+import { validateEmail, validatePassword } from '../utils/Utils';
 import Config from 'react-native-config';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/dist/Fontisto';

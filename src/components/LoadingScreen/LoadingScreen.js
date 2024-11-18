@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import ProgressBar from 'react-native-progress/Bar'; // Import ProgressBar
+import ProgressBar from 'react-native-progress/Bar';
 import { useNavigation } from '@react-navigation/native';
 
 const LoadingScreen = () => {
@@ -14,8 +14,8 @@ const LoadingScreen = () => {
 
     const timeout = setTimeout(() => {
       clearInterval(progressInterval);
-      navigation.replace('Auth'); // Navigate to the home screen
-    }, 5000); // 5-second delay
+      navigation.replace('Auth');
+    }, 5000);
 
     return () => {
       clearTimeout(timeout);
@@ -26,7 +26,7 @@ const LoadingScreen = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/icon/logo.png')} // Replace with your logo URL
+        source={require('../../assets/icon/logo.png')}
         style={styles.logo}
       />
       <Text style={styles.loadingText}>Loading...</Text>

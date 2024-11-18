@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, SafeAreaView, Alert, ActivityIndicator, StyleSheet, Image, TouchableOpacity, ScrollView, ToastAndroid } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { validateEmail, validatePassword } from '../utils/utils';
+import { validateEmail, validatePassword } from '../utils/Utils';
 import Config from 'react-native-config';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/dist/Fontisto';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../store/slices/UserSlice';
 
 
 const API_BASE_URL = 'https://digital-wellbing-api.onrender.com';
 // const API_BASE_URL = 'http://192.168.32.140:5000'; 
 
 const Login = ({ navigation, route }) => {
+    const dispatch = useDispatch()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -46,14 +49,14 @@ const Login = ({ navigation, route }) => {
                 const { userData } = response.data;
                 try {
                     const jsonValue = JSON.stringify(userData);
+                    dispatch(setUserData(jsonValue))
                     await AsyncStorage.setItem('userData', jsonValue);
-                    showToast('Login Successful!'); // Show success message
+                    showToast('Login Successful!');
                     setLoading(false);
                     navigation.reset({
                         index: 0,
                         routes: [{ name: 'Auth' }],
                     });
-                    // navigation.navigate('BottomNav');
                 } catch (e) {
                     console.log(e);
                 }
@@ -126,7 +129,7 @@ const Login = ({ navigation, route }) => {
                                         {loading ? (
                                             <ActivityIndicator size="large" color="#f7ac01" />
                                         ) : (
-                                            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                                            <TouchableOpacity style={styles.button} onPress={() => { handleLogin() }}>
                                                 <Text style={styles.button_text}>Login</Text>
                                             </TouchableOpacity>
                                         )}
